@@ -53,12 +53,14 @@ def todo():
 def submit_todo():
     item_name = request.form.get('itemName')
     item_description = request.form.get('itemDescription')
+    item_id = request.form.get('itemId')
 
     try:
-        if not item_name or not item_description:
+        if not item_name or not item_description or not item_id:
             raise ValueError("All fields are required")
 
         todo_collection.insert_one({
+            "itemId": item_id,
             "itemName": item_name,
             "itemDescription": item_description
         })
