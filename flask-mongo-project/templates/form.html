@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Form</title>
+</head>
+<body>
+    <h2>Submit Data</h2>
+
+    {% if error %}
+        <div style="color: red; border: 1px solid red; padding: 10px;">
+            {{ error }}
+        </div>
+        <br>
+    {% endif %}
+
+    <form action="/submit" method="POST">
+        <label>Name:</label><br>
+        <input type="text" name="name" value="{{ name or '' }}"><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" value="{{ email or '' }}"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
