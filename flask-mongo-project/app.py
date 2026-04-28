@@ -55,16 +55,18 @@ def submit_todo():
     item_description = request.form.get('itemDescription')
     item_id = request.form.get('itemId')
     item_uuid = request.form.get('itemUUID')
+    item_hash = request.form.get('itemHash')
 
     try:
-        if not item_name or not item_description or not item_id or not item_uuid:
+        if not item_name or not item_description or not item_id or not item_uuid or not item_hash:
             raise ValueError("All fields are required")
 
         todo_collection.insert_one({
             "itemId": item_id,
             "itemName": item_name,
-            "itemDescription": item_description
-            "itemUUID": item_uuid
+            "itemDescription": item_description,
+            "itemUUID": item_uuid,
+            "itemHash": item_hash
         })
 
         return redirect(url_for('success'))
